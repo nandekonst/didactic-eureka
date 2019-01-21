@@ -1,0 +1,60 @@
+.card{
+    margin-top: 20px;
+}
+.lang-icon{
+    float: left;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.header_synonym_0{
+    font-weight: bold;
+}
+
+.header_synonym_p_1::before{
+    content:"(";
+}
+
+
+.header_synonym_p_first, .header_synonym_p_middle{
+    margin-right: 5px;
+}
+
+.header_synonym_p_middle::after{
+    content:",";
+}
+
+.header_synonym_p_last{
+
+}
+
+.header_synonyms{
+    display: inline-block;
+}
+
+.header_synonyms_markup{
+    display: inline-block;
+}
+
+.header_synonyms_end_bracket{
+    display: inline-block;
+}
+
+.header_translations{
+    display: inline-block;
+}
+
+.header_translation_p_first, .header_translation_p_middle{
+    margin-right: 5px;
+}
+
+.header_translation_p_first::after, .header_translation_p_middle::after{
+    content:",";
+}
+.mat-expansion-panel-header-title{
+    margin-top: 20px;
+}
+.header_wordtype{
+    margin-top: 20px;
+
+}

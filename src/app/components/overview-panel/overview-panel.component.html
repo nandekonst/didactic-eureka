@@ -1,0 +1,36 @@
+<div class="card">
+
+    <mat-accordion>
+        <mat-expansion-panel *ngFor="let concept of concepts; let cindex = index" >
+          <mat-expansion-panel-header >
+
+            <mat-panel-title>
+                <div class="lang-icon"><img [src]="sourceFlag"> </div>
+
+              <div class="header_synonyms header_synonym_{{hi}}" *ngFor="let lemmaObj of concept.data.lemmas; let hi = index">
+                  <p *ngIf="(hi==0) && concept.data.lemmas.length > 1" class="header_synonym_p_first header_synonym_p_{{hi}}">{{lemmaObj.data.lemma}}</p>
+                  <p *ngIf="(hi != 0) && (hi<concept.data.lemmas.length-1)" class="header_synonym_p_middle header_synonym_p_{{hi}}"> {{lemmaObj.data.lemma}}</p>
+                  <p *ngIf="hi==concept.data.lemmas.length-1" class="header_synonym_p_last header_synonym_p_{{hi}}"> {{lemmaObj.data.lemma}}</p>              
+              </div>
+              <div *ngIf="concept.data.lemmas.length > 1" class="header_synonyms_end_bracket">)</div>
+  
+            </mat-panel-title>
+           
+            <mat-panel-description>
+                <div class="header_wordtype">
+                  <p class="header_wordtype_p">{{currentResourceMaps.wordTypeResources.get(concept.data.lemmas[0].data.word_type)}}</p>
+                </div> 
+            </mat-panel-description>
+           
+          </mat-expansion-panel-header>
+          <div class="lang-icon"><img [src]="targetFlag" /></div>
+          <div class="header_translations header_translation_{{hi}}" *ngFor="let transObj of translations[cindex].data.lemmas; let hi = index">
+              <i class="material-icons">volume_up</i> <p *ngIf="(hi==0) && translations[cindex].data.lemmas.length > 1" class="header_translation_p_first header_translation_p_{{hi}}">{{transObj.data.lemma}}</p>
+              <p *ngIf="(hi != 0) && (hi<translations[cindex].data.lemmas.length-1)" class="header_translation_p_middle header_translation_p_{{hi}}">{{transObj.data.lemma}}</p>
+              <p *ngIf="hi==translations[cindex].data.lemmas.length-1" class="header_translation_p_last header_translation_p_{{hi}}">{{transObj.data.lemma}}</p>
+          </div>
+     
+        </mat-expansion-panel>
+       
+      </mat-accordion>
+</div>

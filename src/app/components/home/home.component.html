@@ -1,0 +1,73 @@
+<navbar></navbar>
+<div class="container">
+
+  <div class="row">
+
+    <div class="col-12">
+
+        <div class="card">
+          <div class="searchbox">
+              <div id="text-input">
+                 <div class="input-group mb-3">
+                   <input (keyup)="triggerAutocomplete(surroundingsValue, sourceLang)" [(ngModel)]="surroundingsValue" id="email" matInput [matAutocomplete]="auto" type="text" class="form-control" name="search" placeholder="Search word">
+                   <mat-autocomplete #auto="matAutocomplete">
+                      <mat-option *ngFor="let form of forms"(keypress)="selectItem(form)" (click)="selectItem(form)" [value]="form">
+                          {{form.data.form}}
+                      </mat-option>
+                  </mat-autocomplete>
+                  </div>
+              </div>
+              <div id="language_box1">
+                 <select class="custom-select" id="lang1" [(ngModel)]="sourceLang" >
+                    <option *ngFor="let language of languages" value="{{language.name}}">{{language.title}}</option>
+                   
+                   </select>
+              </div>
+              <div id="switch_languages">
+                 <button class="btn blue darken-1 white-text" (click)="switchLanguages()" id="switchlang-button" type="button"><></button>
+     
+               </div>
+              <div id="language_box2">
+                 <select class="custom-select" id="lang2" [(ngModel)]="targetLang"  >
+                    <option *ngFor="let language of languages" value="{{language.name}}">{{language.title}}</option>
+                   
+                 </select>
+              </div>
+              <div id="search_button">
+                 <button type="button" (click)="this.searchTranslations()" class="btn btn-primary">Search</button>
+     
+              </div>
+                 
+           </div>
+          </div>
+
+    </div>
+  
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        Space for advertorial
+      </div>
+    </div>
+    
+  </div>
+
+  <div class="row">
+          <div class="col-8">
+           <overview-panel [translations]="translations" [concepts]="concepts" [sourceFlag]="sourceFlag" [targetFlag]="targetFlag" ></overview-panel>
+          </div>
+          <div class="col-4">
+              <div class="card">
+                  Space for advertorial en status updates about what we added to our termbases.
+              </div>
+          </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <footer-panel></footer-panel>
+    </div>
+  </div>
+
+  </div>

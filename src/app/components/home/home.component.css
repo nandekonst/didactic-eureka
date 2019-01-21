@@ -1,0 +1,45 @@
+
+  
+
+
+
+#text-input{
+    width: 400px;
+    float: left;
+    margin-left: 5px;
+}
+#language_box1{
+    width: 100px;
+    float: left;
+    margin-left: 5px;
+}
+#switch_languages{
+    width: 50px;
+    float: left;
+    margin-left: 5px;
+
+}
+#language_box2 {
+    width: 100px;
+    float: left;
+    margin-left: 5px;
+
+}
+#search_button{
+ width: 200px;
+ float: left;
+ margin-left: 5px;
+
+}
+
+.input-group{
+  box-shadow:   rgba(0, 0, 0, 0.1) 0px 2px 4px;
+}
+.card{
+    margin-top: 20px;
+}
+.searchbox{
+    margin-top: 20px;
+    padding: 15px;
+    margin-left: 5px;
+}

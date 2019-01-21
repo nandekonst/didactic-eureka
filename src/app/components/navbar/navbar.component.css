@@ -1,0 +1,17 @@
+a {
+    color: #fff;
+}
+.navbar-nav {
+  display: inline-block;
+}
+.menu-item {
+ padding: 0 14px;
+ cursor: pointer;
+ margin-left: 10px;
+}
+.example-spacer {
+ flex: 1 1 auto;
+}
+.mat-toolbar.mat-primary {
+  background-color: #2196F3;
+}
