@@ -23,12 +23,14 @@
             </mat-panel-description>
            
           </mat-expansion-panel-header>
+     
           <div class="lang-icon"><img [src]="targetFlag" /></div>
           <div class="header_translations header_translation_{{hi}}" *ngFor="let transObj of translations[cindex].data.lemmas; let hi = index">
-              <i class="material-icons">volume_up</i> <p *ngIf="(hi==0) && translations[cindex].data.lemmas.length > 1" class="header_translation_p_first header_translation_p_{{hi}}">{{transObj.data.lemma}}</p>
-              <p *ngIf="(hi != 0) && (hi<translations[cindex].data.lemmas.length-1)" class="header_translation_p_middle header_translation_p_{{hi}}">{{transObj.data.lemma}}</p>
-              <p *ngIf="hi==translations[cindex].data.lemmas.length-1" class="header_translation_p_last header_translation_p_{{hi}}">{{transObj.data.lemma}}</p>
+             <div  mat-raised-button matTooltip="info about the word"> <p (mouseenter)="showAttributes(transObj.data)"  *ngIf="(hi==0) && translations[cindex].data.lemmas.length > 1" class="header_translation_p_first header_translation_p_{{hi}}">{{transObj.data.lemma}}</p> </div>
+             <div mat-raised-button matTooltip="info about the word"> <p (mouseenter)="showAttributes(transObj.data)"  *ngIf="(hi != 0) && (hi<translations[cindex].data.lemmas.length-1)" class="header_translation_p_middle header_translation_p_{{hi}}">{{transObj.data.lemma}}</p> </div>
+             <div mat-raised-button matTooltip="info about the word"> <p (mouseenter)="showAttributes(transObj.data)"  *ngIf="hi==translations[cindex].data.lemmas.length-1" class="header_translation_p_last header_translation_p_{{hi}}">{{transObj.data.lemma}}</p> </div>
           </div>
+          <conjugated-translations [sourceLang]="sourceLang" [targetLang]="targetLang" [conceptid]="concept.data.id" [dictionary]="concept.data.dictionary" [focus]="concept.data.lemmas[0].data.focus" [sourceForm]="sourceForm" ></conjugated-translations>
      
         </mat-expansion-panel>
        

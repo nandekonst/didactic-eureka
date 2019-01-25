@@ -58,3 +58,7 @@
     margin-top: 20px;
 
 }
+
+.mat-expansion-panel-header-description {
+ flex-grow: 0;
+}

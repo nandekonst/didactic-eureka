@@ -39,6 +39,7 @@ export class HomeComponent implements OnInit {
   targetFlag: string;
   pronounce: any[]
   hasPronounce: boolean;
+  sourceForm: string;
 
 
 
@@ -77,6 +78,7 @@ export class HomeComponent implements OnInit {
       this.sourceFlag = "assets/icons/es.png";
     }
   }
+
   getTargetLangIcon(){
     let targetLang = this.targetLang;
     if(targetLang == "nl"){
@@ -122,7 +124,9 @@ export class HomeComponent implements OnInit {
   handleAutocomplete(data){
     this.forms = data.data.forms;
     let center: number = data.data.center_word_position;
-    this.searchlemmas = this.getSearchLemmas(this.forms[center].data)
+    this.searchlemmas = this.getSearchLemmas(this.forms[center].data);
+    this.sourceForm = this.searchlemmas.form_texts[0];
+    
 
   }
   handleAutcompleteError(error){
@@ -165,10 +169,12 @@ export class HomeComponent implements OnInit {
     this.surroundingsValue = item.data.form;
     this.searchlemmas = this.getSearchLemmas(item.data);
     this.loadAutocomplete(item.data.form, sourceLang);
+    console.log("SURRVALUE2" + this.surroundingsValue)
+
   }
 
   searchTranslations(){
-    if((this.surroundingsValue = undefined) || (this.surroundingsValue = "")) {
+    if((this.surroundingsValue == undefined) || (this.surroundingsValue == "")) {
       return
     }
     this.stopAutoComplete();
@@ -204,6 +210,8 @@ export class HomeComponent implements OnInit {
     console.log("CONCEPTS FROM HANDLETRANS" + JSON.stringify(this.concepts))
     this.reference_concepts = data.data.reference_concepts;
     this.reference_translations = data.data.reference_translations;
+    console.log("SURRVALUE" + this.surroundingsValue)
+
   }
   
   handleTranslationError(error){

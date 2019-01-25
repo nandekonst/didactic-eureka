@@ -1,0 +1,15 @@
+.alternatives {
+    display: inline-block;
+}
+
+.alternative_first, .alternative_middle{
+    margin-right: 5px;
+}
+
+.alternative_first::after, .alternative_middle::after{
+    content:",";
+}
+
+.alternative_last{
+
+}

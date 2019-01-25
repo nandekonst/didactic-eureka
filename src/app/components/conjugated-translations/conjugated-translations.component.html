@@ -1,0 +1,32 @@
+<div class="row"  *ngFor="let translation of translations">
+ <div class="col">
+   <div class="conjugated">
+      <div class="variant-name">
+          <b>{{ currentResourceMaps.resources.get(translation.source_variant_name)}}</b>
+          
+        </div>
+        <div class="conjugated-forms">
+            {{translation.source_context}} {{form}} 
+        </div>
+   </div>
+ </div>
+ <div class="col">
+     <div class="conjugated-translations" *ngFor="let variant of translation.conjugations.variants ">
+        <div class="variant-name">
+            <b>{{currentResourceMaps.resources.get(variant.variant_name)}}</b>
+         </div>
+    
+       <div class="forms" *ngFor="let variantForm of variant.forms"  >
+         <div class="alternatives" *ngFor="let alternative of variantForm.form; let i = index;">
+                <p *ngIf="(i==0) && variantForm.form.length > 1" class="alternative_first">{{variantForm.context[i]}} {{alternative}}</p>
+                <p *ngIf="(i != 0) && (i<variantForm.form.length-1)" class="alternative_middle">{{variantForm.context[i]}} {{alternative}}</p>
+                <p *ngIf="i==variantForm.form.length-1" class="alternative_last">{{variantForm.context[i]}} {{alternative}}</p>
+         </div>
+        </div>
+
+     </div>
+ </div>
+
+</div>
+
+

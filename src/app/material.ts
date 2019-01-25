@@ -5,11 +5,13 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatTooltipModule} from '@angular/material/tooltip';
+
 
 
 @NgModule({
-    imports: [MatToolbarModule, MatIconModule,MatCardModule,MatExpansionModule, MatAutocompleteModule],
-    exports: [MatToolbarModule, MatIconModule,MatCardModule, MatExpansionModule, MatAutocompleteModule],
+    imports: [MatToolbarModule, MatIconModule,MatCardModule,MatExpansionModule, MatAutocompleteModule, MatTooltipModule],
+    exports: [MatToolbarModule, MatIconModule,MatCardModule, MatExpansionModule, MatAutocompleteModule, MatTooltipModule],
 })
 
 export class CustomMaterialModule {
