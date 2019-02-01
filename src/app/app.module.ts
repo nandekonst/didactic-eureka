@@ -18,7 +18,7 @@ import {AuthService} from './services/auth.service';
 import { ResourceService } from './shared-services/resource.service';
 import { GrammarService } from './shared-services/grammar.service';
 import { ScreenlanguageService } from './services/screenlanguage.service';
-import { FooterComponent } from './footer/footer.component';
+import { FooterComponent } from './components/footer/footer.component';
 import { ConjugatedTranslationsComponent } from './components/conjugated-translations/conjugated-translations.component';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
