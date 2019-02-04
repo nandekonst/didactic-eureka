@@ -8,9 +8,9 @@
                 <div class="lang-icon"><img [src]="sourceFlag"> </div>
 
               <div class="header_synonyms header_synonym_{{hi}}" *ngFor="let lemmaObj of concept.data.lemmas; let hi = index">
-                <div  mat-raised-button matTooltip="info about the word">  <p *ngIf="(hi==0) && concept.data.lemmas.length > 1" class="header_synonym_p_first header_synonym_p_{{hi}}">{{lemmaObj.data.lemma}}</p></div>
-                  <div  mat-raised-button matTooltip="info about the word">  <p *ngIf="(hi != 0) && (hi<concept.data.lemmas.length-1)" class="header_synonym_p_middle header_synonym_p_{{hi}}"> {{lemmaObj.data.lemma}}</p></div>
-                  <div  mat-raised-button matTooltip="info about the word"> <p *ngIf="hi==concept.data.lemmas.length-1" class="header_synonym_p_last header_synonym_p_{{hi}}"> {{lemmaObj.data.lemma}}</p>   </div>           
+                <div  mat-raised-button matTooltip="{{contents}}">  <p (mouseenter)="showAttributes(concept.data.concept_attributes, lemmaObj.data)" *ngIf="(hi==0) && concept.data.lemmas.length > 1" class="header_synonym_p_first header_synonym_p_{{hi}}">{{lemmaObj.data.lemma}}</p></div>
+                  <div  mat-raised-button matTooltip="{{contents}}">  <p (mouseenter)="showAttributes(concept.data.concept_attributes, lemmaObj.data)" *ngIf="(hi != 0) && (hi<concept.data.lemmas.length-1)" class="header_synonym_p_middle header_synonym_p_{{hi}}"> {{lemmaObj.data.lemma}}</p></div>
+                  <div  mat-raised-button matTooltip="{{contents}}"> <p (mouseenter)="showAttributes(concept.data.concept_attributes, lemmaObj.data)" *ngIf="hi==concept.data.lemmas.length-1" class="header_synonym_p_last header_synonym_p_{{hi}}"> {{lemmaObj.data.lemma}}</p>   </div>           
               </div>
               <div *ngIf="concept.data.lemmas.length > 1" class="header_synonyms_end_bracket">)</div>
   

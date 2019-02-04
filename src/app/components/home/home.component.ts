@@ -11,6 +11,11 @@ import {SearchLemmas} from '../../interfaces/searchlemmas';
 import {Login} from '../../classes/login';
 import {MatAutocompleteTrigger} from '@angular/material/autocomplete';
 import { ResourceService } from '../../shared-services/resource.service';
+import { ScreenlanguageService} from '../../services/screenlanguage.service';
+import { ActivatedRoute } from '@angular/router';
+import {Location} from '@angular/common';
+
+
 
 @Component({
   selector: 'home',
@@ -43,25 +48,33 @@ export class HomeComponent implements OnInit {
 
 
 
-  constructor(private injector: Injector, private title: Title, private meta: Meta, private mergerService: MergerService, private resourceService:ResourceService,) {
+  constructor(private injector: Injector, private activatedRoute:ActivatedRoute, private location: Location,  private title: Title, private meta: Meta, private mergerService: MergerService, private resourceService:ResourceService, private screenlanguageService: ScreenlanguageService) {
     this.login = new Login(injector);
   }
 
   ngOnInit() {
-    console.log("SL" + this.sourceLang)
+    if (this.activatedRoute !=undefined){
+      this.sourceLang = this.activatedRoute.snapshot.paramMap.get('sourcelang');
+      this.targetLang = this.activatedRoute.snapshot.paramMap.get('targetlang');
+      this.surroundingsValue = this.activatedRoute.snapshot.paramMap.get('search');
+      this.searchTranslations();
+    }
+
     this.title.setTitle("Euroglot Online | Vertalen woorden, synoniemen, uitdrukkingen en spreekwoorden");
     this.meta.addTag({name: 'description', content: 'Online vertaalwoordenboek kruislings woorden en uitdrukkingen vertalen Nederlands, Engels, Frans, Duits, Spaans, Italiaans'}, true);
     this.login.onLoginSubmit();
     this.getSourceLangIcon();
     this.getTargetLangIcon();
-  }
+    let screenlanguage = this.screenlanguageService.getScreenLanguage();
+    this.screenlanguageService.setScreenLanguage(screenlanguage);
 
-  getPronounce(pronounceArray){
+  
     
+
+
   }
 
   getSourceLangIcon(){
-    console.log("SOURCELANG" + this.sourceLang)
     let sourceLang = this.sourceLang;
     
     if(sourceLang == "nl"){
@@ -108,37 +121,40 @@ export class HomeComponent implements OnInit {
 
     if(this.switchLemma != ""){
       this.surroundingsValue = this.switchLemma;
-      this.loadAutocomplete(this.switchLemma, this.sourceLang)
+      this.loadAutocomplete(this.switchLemma, true)
     }
 
   }
 
- loadAutocomplete(query: string, sourceLang: string){
-    return this.mergerService.search(sourceLang, query, this.caseSensitive, this.diacriticSensitive).subscribe(
-      data => this.handleAutocomplete(data),
+ loadAutocomplete(query: string, lookup:boolean){
+    return this.mergerService.search(this.sourceLang, query, this.caseSensitive, this.diacriticSensitive).subscribe(
+      data => this.handleAutocomplete(data, lookup),
       error => this.handleAutcompleteError(error)
     )
 
   }
 
-  handleAutocomplete(data){
+  handleAutocomplete(data, lookup:boolean){
     this.forms = data.data.forms;
     let center: number = data.data.center_word_position;
     this.searchlemmas = this.getSearchLemmas(this.forms[center].data);
     this.sourceForm = this.searchlemmas.form_texts[0];
     
+    if (lookup) {
+      this.loadTranslations();
+    }
 
   }
   handleAutcompleteError(error){
     console.log(error)
   }
 
-  triggerAutocomplete(query: string, sourceLang: string){
+  triggerAutocomplete(query: string, lookup){
     this.autocompleteInput = query;
 
     let timer = TimerObservable.create(1000);
     this.autocompleteTimerSubscription = timer.subscribe( t => {
-      this.loadAutocomplete(this.autocompleteInput, sourceLang)
+      this.loadAutocomplete(this.autocompleteInput, false)
       this.stopAutoComplete();
     
     })
@@ -164,13 +180,71 @@ export class HomeComponent implements OnInit {
     return searchLemmas
   }
 
-  selectItem(item, sourceLang){
-    sourceLang = this.sourceLang
+  selectItem(item){
     this.surroundingsValue = item.data.form;
     this.searchlemmas = this.getSearchLemmas(item.data);
-    this.loadAutocomplete(item.data.form, sourceLang);
+    this.loadAutocomplete(item.data.form, false );
     console.log("SURRVALUE2" + this.surroundingsValue)
 
+  }
+
+  routeProvider(): string {
+    let screenlanguage = this.screenlanguageService.getScreenLanguage();
+    let url = '';
+    switch(screenlanguage){
+      case 'nl': {
+        url += 'vertaal';
+        break;
+      }
+      case 'en': {
+        url += 'translate';
+        break;
+      }
+      case 'fr': {
+        url += 'traduire';
+        break;
+      }
+      case 'de': {
+        url += 'ubersetzung';
+        break;
+      }
+      case 'es': {
+        url += 'traduccion';
+        break;
+      }
+      case 'it': {
+        url += 'traduizzone';
+        break;
+      }
+      default: {
+        url += 'translate';
+        break;
+      }
+      
+      
+    }
+
+    url += '/';
+    url += this.sourceLang;
+    url += '/';
+    url += this.targetLang;
+    url += '/';
+    url += this.surroundingsValue;
+    
+    return url
+  }
+
+  getPronounce(){
+    //todo
+  }
+
+  onSearchTranslations(){
+    console.log("RouteProv" + this.routeProvider())
+
+    this.location.go(this.routeProvider());
+    
+    this.searchTranslations();
+    
   }
 
   searchTranslations(){
@@ -182,7 +256,7 @@ export class HomeComponent implements OnInit {
       if(this.surroundingsValue == undefined){
         return
       }
-      this.loadAutocomplete(this.surroundingsValue, this.sourceLang)
+      this.loadAutocomplete(this.surroundingsValue, true)
     } else {
       this.loadTranslations()
     }
@@ -195,13 +269,17 @@ export class HomeComponent implements OnInit {
       return
     }
     this.matAutocompleteTrigger.closePanel();
+
     return this.mergerService.makeTranslationsPOST(this.sourceLang, this.targetLang, this.searchlemmas, this.caseSensitive, this.diacriticSensitive).subscribe(
       data => this.handleTranslationSuccess(data),
       error => this.handleTranslationError(error)
     )
+
   }
 
   handleTranslationSuccess(data){
+    //this.router.navigate(['/translate', this.sourceLang, this.targetLang, this.surroundingsValue])
+
     this.translations = data.data.translations;
     this.concepts = data.data.concepts;
     this.fetchWordTypes(this.concepts);
@@ -210,7 +288,6 @@ export class HomeComponent implements OnInit {
     console.log("CONCEPTS FROM HANDLETRANS" + JSON.stringify(this.concepts))
     this.reference_concepts = data.data.reference_concepts;
     this.reference_translations = data.data.reference_translations;
-    console.log("SURRVALUE" + this.surroundingsValue)
 
   }
   

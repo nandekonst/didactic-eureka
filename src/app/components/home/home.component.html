@@ -4,7 +4,7 @@
   <div class="row">
 
     <div class="col-12">
-
+        <a routerLink="/translate/nl/en/test">Test</a>
         <div class="card">
           <div class="searchbox">
               <div id="text-input">
@@ -34,7 +34,7 @@
                  </select>
               </div>
               <div id="search_button">
-                 <button type="button" (click)="this.searchTranslations()" class="btn btn-primary">Search</button>
+                 <button type="button" (click)="onSearchTranslations()" class="btn btn-primary">{{'DICTIONARY.SEARCH' | translate}}</button>
      
               </div>
                  

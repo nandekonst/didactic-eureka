@@ -1,0 +1,11 @@
+{
+    "NAVBAR": {
+        "PRODUCTS": "Producten",
+        "FORUM" : "Forum",
+        "CONTACT": "Contact"
+
+    },
+    "DICTIONARY": {
+        "SEARCH" : "Zoeken"
+    }
+}

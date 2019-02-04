@@ -6,7 +6,7 @@ import { TranslateService } from '@ngx-translate/core';
   providedIn: 'root'
 })
 export class ScreenlanguageService {
-
+  screenLanguage: string;
   browserLang: string;
 
   constructor(private translate: TranslateService){
@@ -18,5 +18,11 @@ export class ScreenlanguageService {
 
   getScreenLanguage(): string {
       return this.browserLang;
+  }
+
+  setScreenLanguage(screenlanguage): string{
+    this.screenLanguage = screenlanguage;
+    this.translate.use(this.screenLanguage);
+    return this.screenLanguage;
   }
 }

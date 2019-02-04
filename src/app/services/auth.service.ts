@@ -1,10 +1,14 @@
-import { Injectable, EventEmitter  } from '@angular/core';
+import { Injectable, EventEmitter   } from '@angular/core';
 import { HttpHeaders, HttpParams, HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import {tokenNotExpired} from 'angular2-jwt';
 import {HttpService, TokenNeedsRefreshingEvent} from '../services/http.service';
 import {Observable} from 'rxjs';
 import { environment } from '../../environments/environment';
+import * as FormData from 'form-data';
+
+//Local Storage is browserside storage and not recognized by server. So we need to create cookie service instead of get and set item of localstorage
+// /https://stackoverflow.com/questions/39085632/localstorage-is-not-defined-angular-universal
 
 const API_URL = 'http://' + environment.API_IP + ":" + environment.PORT_AUTH + environment.ENDPOINT_AUTH
 //const LOGIN_URL = API_URL + '/testauth/';

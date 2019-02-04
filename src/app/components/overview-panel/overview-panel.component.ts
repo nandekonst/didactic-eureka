@@ -30,15 +30,14 @@ export class OverviewPanelComponent implements OnInit {
   constructor(private mergerService: MergerService, private resourceService: ResourceService, private screenlanguageService: ScreenlanguageService) { }
 
   ngOnInit() {
+    let screenlanguage = this.screenlanguageService.getScreenLanguage();
+    this.screenlanguageService.setScreenLanguage(screenlanguage);
 
    // console.log("SURR" + this.homeComponent.surroundingsValue)
     this.resourceService.currentResourceMaps.subscribe(currentResourceMap => this.currentResourceMaps = currentResourceMap);
 
   }
 
-  ngAfterViewInit(){
-    //this.parseAttributeData();
-  }
 
   showAttributes(conceptattributes, lemmaJSON){
     this.attributeList = [];
@@ -56,11 +55,12 @@ export class OverviewPanelComponent implements OnInit {
         this.attributeList.push(attribute);
       })
     }
-    this.parseAttributeData();
     console.log("LEMMAJSON" + JSON.stringify(lemmaJSON) + "CONCEPTATT" + JSON.stringify(conceptattributes) + "LIST" +  this.attributeList)
+    this.parseAttributeData();
+
   }
 
-  parseAttributeData(){
+   parseAttributeData(){
     if(this.attributeList == undefined){
       return;
     }
@@ -76,11 +76,12 @@ export class OverviewPanelComponent implements OnInit {
   showResources(resources: string[]){
     this.contents = '';
     resources.forEach(resource => {
-      if(this.contents = ''){
+      if(this.contents != ''){
         this.contents += ', ';
       }
-      this.contents = resource;
-      console.log("RESOURCE" + resource)
+      this.contents += resource;
+      console.log(this.contents)
+
     })
   }
   
