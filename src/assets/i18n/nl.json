@@ -6,6 +6,9 @@
 
     },
     "DICTIONARY": {
-        "SEARCH" : "Zoeken"
+        "SEARCH" : "Zoeken",
+        "CONJUGATIONS" : "Vervoegingen",
+        "OTHER_RESOURCES" : "Andere bronnen"
+
     }
 }

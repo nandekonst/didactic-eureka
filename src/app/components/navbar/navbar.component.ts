@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ScreenlanguageService} from '../../services/screenlanguage.service';
+import { FlexLayoutModule } from "@angular/flex-layout";
+
 @Component({
   selector: 'navbar',
   templateUrl: './navbar.component.html',

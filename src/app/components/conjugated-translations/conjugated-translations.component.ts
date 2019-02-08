@@ -18,7 +18,7 @@ export class ConjugatedTranslationsComponent implements OnInit {
  @Input() dictionary: string;
  @Input() focus: number;
  @Input() sourceForm: string;
-
+ hasResult: boolean = false;
  form: string;
  lemma: string;
  translations: any[] = [];
@@ -51,6 +51,14 @@ export class ConjugatedTranslationsComponent implements OnInit {
       this.form = data.data.form;
       this.lemma = data.data.lemma;
       this.translations = data.data.translations;
+      if(this.translations == undefined){
+        return;
+      }
+      if(this.translations.length === 0){
+        this.hasResult = false;
+      } else {
+        this.hasResult = true;
+      }
       console.log("TRANS" + JSON.stringify(this.translations))
       this.getResources();
     }

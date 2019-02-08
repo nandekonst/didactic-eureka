@@ -4,19 +4,10 @@
   <div class="row">
 
     <div class="col-12">
-        <a routerLink="/translate/nl/en/test">Test</a>
-        <div class="card">
+        <div class="card"><h1 class="text-center">Euroglot.com</h1>
+          <p class="text-center">Kies de bron en doel taal, voer een woord of een uitdrukking in en klik op zoeken</p>
           <div class="searchbox">
-              <div id="text-input">
-                 <div class="input-group mb-3">
-                   <input (keyup)="triggerAutocomplete(surroundingsValue, sourceLang)" [(ngModel)]="surroundingsValue" id="email" matInput [matAutocomplete]="auto" type="text" class="form-control" name="search" placeholder="Search word">
-                   <mat-autocomplete #auto="matAutocomplete">
-                      <mat-option *ngFor="let form of forms"(keypress)="selectItem(form)" (click)="selectItem(form)" [value]="form">
-                          {{form.data.form}}
-                      </mat-option>
-                  </mat-autocomplete>
-                  </div>
-              </div>
+           
               <div id="language_box1">
                  <select class="custom-select" id="lang1" [(ngModel)]="sourceLang" >
                     <option *ngFor="let language of languages" value="{{language.name}}">{{language.title}}</option>
@@ -33,6 +24,16 @@
                    
                  </select>
               </div>
+              <div id="text-input">
+                  <div class="input-group mb-3">
+                    <input (keyup)="triggerAutocomplete(surroundingsValue, sourceLang)" [(ngModel)]="surroundingsValue" id="email" matInput [matAutocomplete]="auto" type="text" class="form-control" name="search" placeholder="Search word">
+                    <mat-autocomplete #auto="matAutocomplete">
+                       <mat-option *ngFor="let form of forms"(keypress)="selectItem(form)" (click)="selectItem(form)" [value]="form">
+                           {{form.data.form}}
+                       </mat-option>
+                   </mat-autocomplete>
+                   </div>
+               </div>
               <div id="search_button">
                  <button type="button" (click)="onSearchTranslations()" class="btn btn-primary">{{'DICTIONARY.SEARCH' | translate}}</button>
      
@@ -55,15 +56,27 @@
   </div>
 
   <div class="row">
-          <div class="col-8">
+          <div class="col-sm-8">
            <overview-panel [sourceLang]="sourceLang" [targetLang]="targetLang" [translations]="translations" [concepts]="concepts" [sourceFlag]="sourceFlag" [targetFlag]="targetFlag" [sourceForm]="surroundingsValue"></overview-panel>
           </div>
-          <div class="col-4">
+          <div class="col-sm-4">
               <div class="card">
                   Space for advertorial en status updates about what we added to our termbases.
               </div>
           </div>
   </div>
+  <br>
+  <div class="row">
+      <div class="col-8">
+          <tm-panel [sourceLang]="sourceLang" [targetLang]="targetLang" [sourceForm]="surroundingsValue"></tm-panel>
+        </div>
+         <div class="col-4">
+             <div class="card">
+                 Space for advertorial en status updates about what we added to our termbases.
+             </div>
+         </div>
+
+  </div> 
   <div class="row">
     <div class="col-sm">
       <div class="card">
@@ -81,10 +94,9 @@
       </div>
     </div>
   </div>
-  <!--<div class="row">
-    <div class="col-12">
-      <footer-panel></footer-panel>
-    </div>
-  </div>-->
+
+
 
   </div>
+ 
+  

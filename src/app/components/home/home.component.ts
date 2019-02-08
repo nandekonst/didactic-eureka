@@ -2,6 +2,7 @@ import { Component, OnInit, Injector, ViewChild } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 import {NavbarComponent} from '../navbar/navbar.component';
 import {OverviewPanelComponent} from '../overview-panel/overview-panel.component';
+import {TmPanelComponent} from '../tm-panel/tm-panel.component';
 import { Languages } from '../../interfaces/languages';
 import { MergerService } from '../../services/merger.service';
 import { Subscription } from 'rxjs';
@@ -22,6 +23,7 @@ import {Location} from '@angular/common';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
+
 export class HomeComponent implements OnInit {
   sourceLang: string;
   targetLang: string;
@@ -35,6 +37,7 @@ export class HomeComponent implements OnInit {
   forms: any[];
   searchlemmas: SearchLemmas;
   login: Login;
+  @ViewChild(TmPanelComponent) tmpanelcomponent: TmPanelComponent;
   @ViewChild(MatAutocompleteTrigger) matAutocompleteTrigger: MatAutocompleteTrigger;
   translations: any[];
   concepts: any[];
@@ -171,7 +174,6 @@ export class HomeComponent implements OnInit {
 
   getSearchLemmas(surroundData:any): SearchLemmas {
     let searchLemmas = new SearchLemmas();
-
     for(let lemma of surroundData.lemmas){
       searchLemmas.lemmas.push(lemma.data.lemma);
       searchLemmas.form_texts.push(surroundData.form);
@@ -239,11 +241,15 @@ export class HomeComponent implements OnInit {
   }
 
   onSearchTranslations(){
+    //this.clear();
+    //this.tmpanelcomponent.clear();
     console.log("RouteProv" + this.routeProvider())
 
     this.location.go(this.routeProvider());
     
     this.searchTranslations();
+    this.tmpanelcomponent.loadTranslations();
+    
     
   }
 
@@ -283,7 +289,7 @@ export class HomeComponent implements OnInit {
     this.translations = data.data.translations;
     this.concepts = data.data.concepts;
     this.fetchWordTypes(this.concepts);
-    this.getPronounce(this.translations);
+    //this.getPronounce(this.translations);
 
     console.log("CONCEPTS FROM HANDLETRANS" + JSON.stringify(this.concepts))
     this.reference_concepts = data.data.reference_concepts;
@@ -300,6 +306,20 @@ export class HomeComponent implements OnInit {
       let wt = concept.data.lemmas[0].data.word_type
       this.resourceService.resourceWordType(wt, this.sourceLang)
     }
+
+  }
+
+  clear(){
+    this.concepts = [];
+    this.reference_concepts = [];
+    this.translations = [];
+    this.reference_translations = [];
+    if(this.searchlemmas != undefined){
+      this.searchlemmas.clear();
+    }
+
+    this.surroundingsValue = "";
+    this.forms = [];
 
   }
 

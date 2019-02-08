@@ -6,7 +6,10 @@
 
     },
     "DICTIONARY": {
-        "SEARCH" : "Search"
+        "SEARCH" : "Search",
+        "CONJUGATIONS" : "Conjugations",
+        "OTHER_RESOURCES" : "Other resources"
+
     }
     
 }

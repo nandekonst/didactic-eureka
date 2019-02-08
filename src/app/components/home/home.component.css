@@ -3,10 +3,43 @@
 .container{
     height: calc(100vh - 48px);
 }
+.row-footer{
+    margin-top: 40px;
+}
+h1 {
+    color: #007bff;
+}
+.com{
+    color: #4da3ff;
+}
 
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+  
+    #text-input{
+        width: 50%;
+        float: left;
+        margin-left: 5px;
+    }
+}
+@media only screen and (min-width : 321px) {
+    #text-input{
+        width: 50%;
+        float: left;
+        margin-left: 5px;
+    }
+}
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width : 320px) {
+    #text-input{
+        width: 50%;
+        float: left;
+        margin-left: 5px;
+    }
+}
 
 #text-input{
-    width: 400px;
+    width: 50%;
     float: left;
     margin-left: 5px;
 }

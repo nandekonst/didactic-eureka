@@ -1,3 +1,7 @@
+<div *ngIf="hasResult">
+
+<h4>{{'DICTIONARY.CONJUGATIONS' | translate}}</h4>
+
 <div class="row"  *ngFor="let translation of translations">
  <div class="col">
    <div class="conjugated">
@@ -26,6 +30,8 @@
 
      </div>
  </div>
+
+</div>
 
 </div>
 

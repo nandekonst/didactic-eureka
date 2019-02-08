@@ -1,0 +1,8 @@
+
+
+.sentence-part:nth-of-type(2n){
+ font-weight: bold;
+}
+.sentence-part{
+ display: inline;
+}

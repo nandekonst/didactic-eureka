@@ -1,0 +1,23 @@
+<table mat-table [dataSource]="dataSource">
+  <ng-container matColumnDef="first">
+    <th mat-header-cell *matHeaderCellDef> {{titleOfLanguageName(currentSearchSourceLanguage)}} </th>
+    <td class="table-col" mat-cell *matCellDef="let element">
+        <!--{{element.first}}-->
+        <div class="sentence-part" *ngFor="let part of element.splittedFirstSentence">
+            {{part}}
+        </div>
+    </td>
+  </ng-container>
+<ng-container matColumnDef="second"  *ngIf="haveResults">
+    <th mat-header-cell *matHeaderCellDef> Voorbeeldzinnen </th>
+    <td mat-cell *matCellDef="let element">
+        <!--{{element.second}}-->
+        <div class="sentence-part" *ngFor="let part of element.splittedSecondSentence">
+            {{part}}
+        </div>
+    </td>
+</ng-container>
+<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
