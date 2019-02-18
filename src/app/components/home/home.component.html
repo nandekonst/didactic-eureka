@@ -4,8 +4,13 @@
   <div class="row">
 
     <div class="col-12">
-        <div class="card"><h1 class="text-center">Euroglot.com</h1>
-          <p class="text-center">Kies de bron en doel taal, voer een woord of een uitdrukking in en klik op zoeken</p>
+     
+        <div class="card">
+            <div class="headline">
+              <h1 class="text-center">Woorden en uitdrukkingen vertalen</h1>
+              <p class="text-center">Kies de bron en doel taal, voer een woord of een uitdrukking in en klik op zoeken</p>
+
+            </div>
           <div class="searchbox">
            
               <div id="language_box1">
@@ -49,19 +54,133 @@
   <div class="row">
     <div class="col-12">
       <div class="card">
-        Space for advertorial
+        <div class="row">
+            <div class="col-sm-10">
+                <p class="description-subscription">Ook de thesaurus, medische, juridische, technische, handel, it, chemische woordenboeken gebruiken en hele zinnen kunnen vertalen? Neem dan een abonnement op <span class="platform">Euroglot Language platform</span></p>
+    
+            </div>
+            <div class="col-md-2 col-lg-2">
+              <div class="button-subscription">
+                  <a href="http://localhost:4200/pricing"><button type="button" class="btn btn-danger">Subscribe now</button></a>
+
+              </div>
+            </div>
+        </div>
+      
+       
       </div>
     </div>
     
   </div>
 
   <div class="row">
-          <div class="col-sm-8">
+          <div class="col-sm-9">
            <overview-panel [sourceLang]="sourceLang" [targetLang]="targetLang" [translations]="translations" [concepts]="concepts" [sourceFlag]="sourceFlag" [targetFlag]="targetFlag" [sourceForm]="surroundingsValue"></overview-panel>
+          
+           <div class="row">
+            <div class="col-sm">
+              <div class="card-wrapper">
+                <div class="card contents">
+                  <div class="card-header">Duits</div>
+                  <img class="card-img-top" src="https://cdn.pixabay.com/photo/2014/07/11/17/12/dictionary-390055_1280.jpg" alt="Card image cap">
+
+                    <div class="card-body">
+                     Informatie over Duits
+                    </div>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="col-sm">
+                <div class="card-wrapper">
+                    <div class="card contents">
+                      <div class="card-header">Frans</div>
+                      <img class="card-img-top" src="https://cdn.pixabay.com/photo/2014/07/11/17/12/dictionary-390055_1280.jpg" alt="Card image cap">
+                        <div class="card-body">
+                        Informatie over Frans                          
+                        </div>
+                      
+                    </div>
+                  </div>
+            </div>
+            <div class="col-sm">
+                <div class="card-wrapper">
+                    <div class="card contents">
+                      <div class="card-header">Spaans</div>
+                      <img class="card-img-top" src="https://cdn.pixabay.com/photo/2014/07/11/17/12/dictionary-390055_1280.jpg" alt="Card image cap">
+                        <div class="card-body">
+                        Informatie over Spaans                          
+                        </div>
+                      
+                    </div>
+                  </div>
+            </div>
+           
+           </div>
+           <div class="row">
+              <div class="col-sm">
+                <div class="card-wrapper">
+                  <div class="card contents">
+                    <div class="card-header">Duits</div>
+                    <img class="card-img-top" src="https://cdn.pixabay.com/photo/2014/07/11/17/12/dictionary-390055_1280.jpg" alt="Card image cap">
+  
+                      <div class="card-body">
+                       Informatie over Duits
+                      </div>
+                    
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm">
+                  <div class="card-wrapper">
+                      <div class="card contents">
+                        <div class="card-header">Frans</div>
+                        <img class="card-img-top" src="https://cdn.pixabay.com/photo/2014/07/11/17/12/dictionary-390055_1280.jpg" alt="Card image cap">
+                          <div class="card-body">
+                          Informatie over Frans                          
+                          </div>
+                        
+                      </div>
+                    </div>
+              </div>
+              <div class="col-sm">
+                  <div class="card-wrapper">
+                      <div class="card contents">
+                        <div class="card-header">Spaans</div>
+                        <img class="card-img-top" src="https://cdn.pixabay.com/photo/2014/07/11/17/12/dictionary-390055_1280.jpg" alt="Card image cap">
+                          <div class="card-body">
+                          Informatie over Spaans                          
+                          </div>
+                        
+                      </div>
+                    </div>
+              </div>
+             
+             </div>
+
+
+
           </div>
-          <div class="col-sm-4">
-              <div class="card">
-                  Space for advertorial en status updates about what we added to our termbases.
+          <div class="col-sm-3">
+              <div class="card-wrapper">
+                <div class="card contents">
+                    <div class="card-header">Header</div>
+                    <div class="card-body">
+                        <h5 class="card-title">Zojuist vertaald</h5>
+                        
+                          <ul>
+                            <li> NL / EN: Test</li>
+                            <li> FR / EN: Avoir</li>
+                          </ul>
+                        
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Vocabulary updates Euroglot</h5>
+                        <p class="card-text"> 19-02-2019: 700 termen toegevoegd aan het Juridisch woordenboek </p>
+                    </div>
+                   
+                </div>
+               
               </div>
           </div>
   </div>
@@ -69,31 +188,13 @@
   <div class="row">
       <div class="col-8">
           <tm-panel [sourceLang]="sourceLang" [targetLang]="targetLang" [sourceForm]="surroundingsValue"></tm-panel>
-        </div>
+      </div>
          <div class="col-4">
-             <div class="card">
-                 Space for advertorial en status updates about what we added to our termbases.
-             </div>
+            
          </div>
 
   </div> 
-  <div class="row">
-    <div class="col-sm">
-      <div class="card">
-        Bezoek het talen forum
-      </div>
-    </div>
-    <div class="col-sm">
-      <div class="card">
-        Onze producten
-      </div>
-    </div>
-    <div class="col-sm">
-      <div class="card">
-       Markt
-      </div>
-    </div>
-  </div>
+ 
 
 
 

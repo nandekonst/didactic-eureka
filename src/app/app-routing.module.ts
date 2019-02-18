@@ -4,6 +4,7 @@ import { HomeComponent } from './components/home/home.component';
 import { OverviewPanelComponent } from './components/overview-panel/overview-panel.component';
 import { AppComponent } from './app.component';
 import { NotFoundComponent } from './not-found.component';
+import { PricingComponent } from 'src/app/components/pricing/pricing.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path:'ubersetzung/:sourcelang/:targetlang/:search', component: HomeComponent},
   {path:'traduccion/:sourcelang/:targetlang/:search', component: HomeComponent},
   {path:'traduzzione/:sourcelang/:targetlang/:search', component: HomeComponent},
+  {path: 'pricing', component: PricingComponent},
 
   //{ path: '', loadChildren: './welcome/welcome.module#WelcomeModule' },
   { path: '**', component: NotFoundComponent }

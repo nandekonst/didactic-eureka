@@ -17,25 +17,31 @@ h1 {
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
   
     #text-input{
-        width: 50%;
         float: left;
         margin-left: 5px;
+        margin-top: 20px;
     }
 }
-@media only screen and (min-width : 321px) {
+@media only screen and (min-device-width: 480px) and (max-device-width: 640px) {
     #text-input{
-        width: 50%;
         float: left;
         margin-left: 5px;
+        margin-top: 20px;
+
+
+
     }
 }
-/* Smartphones (portrait) ----------- */
-@media only screen and (max-width : 320px) {
-    #text-input{
-        width: 50%;
-        float: left;
-        margin-left: 5px;
+
+@media only screen and (min-device-width: 480px) and (max-device-width: 640px){
+    #search_button {
+     margin-top: 20px;
     }
+}
+
+
+.headline{
+ margin-top: 40px;
 }
 
 #text-input{
@@ -77,4 +83,14 @@ h1 {
     margin-top: 20px;
     padding: 15px;
     margin-left: 5px;
+}
+.button-subscription{
+    margin-top: 20px;
+}
+.description-subscription{
+    padding: 10px;
+}
+.platform{
+    color: #007bff;
+    font-weight: bold;
 }

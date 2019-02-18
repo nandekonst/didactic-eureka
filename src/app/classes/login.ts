@@ -2,8 +2,8 @@ import {AuthService} from '../services/auth.service';
 import {OnInit, Inject, Injector } from  '@angular/core';
 
 export class Login implements OnInit {
-    username: string = "nskonst"
-    password: string = "nevada"
+    username: string = "testaccount"
+    password: string = "test123"
 
     private authService: AuthService;
 

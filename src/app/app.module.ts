@@ -12,6 +12,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { OverviewPanelComponent } from './components/overview-panel/overview-panel.component';
 import { MergerService } from './services/merger.service';
 import { ConjugationService } from './services/conjugation.service';
+import {SearchService} from './shared-services/search.service';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { HttpService } from './services/http.service';
@@ -25,6 +26,7 @@ import { ConjugatedTranslationsComponent } from './components/conjugated-transla
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { TmPanelComponent } from './components/tm-panel/tm-panel.component';
+import { PricingComponent } from './components/pricing/pricing.component';
 
 
 export const APP_ID = 'my-app';
@@ -52,8 +54,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     })
   ],
   exports: [ AppRoutingModule ],
-  providers: [MergerService, HttpService, AuthService, ResourceService,ConjugationService, GrammarService, ScreenlanguageService, TmService ],
+  providers: [MergerService, HttpService, AuthService, ResourceService,ConjugationService, GrammarService, ScreenlanguageService, TmService, SearchService ],
   bootstrap: [ AppComponent ],
-  declarations: [HomeComponent, NavbarComponent, OverviewPanelComponent, FooterComponent, ConjugatedTranslationsComponent, TmPanelComponent]
+  declarations: [HomeComponent, NavbarComponent, OverviewPanelComponent, FooterComponent, ConjugatedTranslationsComponent, TmPanelComponent, PricingComponent]
 })
 export class AppModule { }

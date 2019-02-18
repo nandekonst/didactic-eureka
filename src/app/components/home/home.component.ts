@@ -1,5 +1,6 @@
 import { Component, OnInit, Injector, ViewChild } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import {NavbarComponent} from '../navbar/navbar.component';
 import {OverviewPanelComponent} from '../overview-panel/overview-panel.component';
 import {TmPanelComponent} from '../tm-panel/tm-panel.component';
@@ -13,6 +14,7 @@ import {Login} from '../../classes/login';
 import {MatAutocompleteTrigger} from '@angular/material/autocomplete';
 import { ResourceService } from '../../shared-services/resource.service';
 import { ScreenlanguageService} from '../../services/screenlanguage.service';
+import { SearchService, searchOptionsInterface } from '../../shared-services/search.service';
 import { ActivatedRoute } from '@angular/router';
 import {Location} from '@angular/common';
 
@@ -48,11 +50,15 @@ export class HomeComponent implements OnInit {
   pronounce: any[]
   hasPronounce: boolean;
   sourceForm: string;
+  url: string;
 
 
 
-  constructor(private injector: Injector, private activatedRoute:ActivatedRoute, private location: Location,  private title: Title, private meta: Meta, private mergerService: MergerService, private resourceService:ResourceService, private screenlanguageService: ScreenlanguageService) {
+  constructor(private router: Router, private searchService: SearchService, private injector: Injector, private activatedRoute:ActivatedRoute, private location: Location,  private title: Title, private meta: Meta, private mergerService: MergerService, private resourceService:ResourceService, private screenlanguageService: ScreenlanguageService) {
     this.login = new Login(injector);
+    this.searchService.currentSearch.subscribe(searchOptions => {
+      this.search(searchOptions);
+    })
   }
 
   ngOnInit() {
@@ -70,11 +76,19 @@ export class HomeComponent implements OnInit {
     this.getTargetLangIcon();
     let screenlanguage = this.screenlanguageService.getScreenLanguage();
     this.screenlanguageService.setScreenLanguage(screenlanguage);
+  }
 
-  
-    
-
-
+  search(searchOptions: searchOptionsInterface){
+    if(searchOptions == undefined){
+      return
+    }
+    if(searchOptions.language != this.sourceLang){
+      this.switchLemma = searchOptions.lemma;
+      this.switchLanguages();
+    } else {
+      this.surroundingsValue = searchOptions.lemma;
+      this.loadAutocomplete(searchOptions.lemma, true);
+    }
   }
 
   getSourceLangIcon(){
@@ -154,7 +168,6 @@ export class HomeComponent implements OnInit {
 
   triggerAutocomplete(query: string, lookup){
     this.autocompleteInput = query;
-
     let timer = TimerObservable.create(1000);
     this.autocompleteTimerSubscription = timer.subscribe( t => {
       this.loadAutocomplete(this.autocompleteInput, false)
@@ -192,48 +205,48 @@ export class HomeComponent implements OnInit {
 
   routeProvider(): string {
     let screenlanguage = this.screenlanguageService.getScreenLanguage();
-    let url = '';
+    this.url = '';
     switch(screenlanguage){
       case 'nl': {
-        url += 'vertaal';
+        this.url += 'vertaal';
         break;
       }
       case 'en': {
-        url += 'translate';
+        this.url += 'translate';
         break;
       }
       case 'fr': {
-        url += 'traduire';
+        this.url += 'traduire';
         break;
       }
       case 'de': {
-        url += 'ubersetzung';
+        this.url += 'ubersetzung';
         break;
       }
       case 'es': {
-        url += 'traduccion';
+        this.url += 'traduccion';
         break;
       }
       case 'it': {
-        url += 'traduizzone';
+        this.url += 'traduizzone';
         break;
       }
       default: {
-        url += 'translate';
+        this.url += 'translate';
         break;
       }
       
       
     }
 
-    url += '/';
-    url += this.sourceLang;
-    url += '/';
-    url += this.targetLang;
-    url += '/';
-    url += this.surroundingsValue;
+    this.url += '/';
+    this.url += this.sourceLang;
+    this.url += '/';
+    this.url += this.targetLang;
+    this.url += '/';
+    this.url += this.surroundingsValue;
     
-    return url
+    return this.url
   }
 
   getPronounce(){
@@ -248,7 +261,7 @@ export class HomeComponent implements OnInit {
     this.location.go(this.routeProvider());
     
     this.searchTranslations();
-    this.tmpanelcomponent.loadTranslations();
+    //this.tmpanelcomponent.loadTranslations();
     
     
   }
@@ -320,6 +333,12 @@ export class HomeComponent implements OnInit {
 
     this.surroundingsValue = "";
     this.forms = [];
+
+  }
+
+  goToPricing(){
+    this.url = "";
+    this.router.navigate(['/pricing']);
 
   }
 

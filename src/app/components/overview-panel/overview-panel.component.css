@@ -15,22 +15,25 @@ h3{
     font-weight: bold;
 }
 
+
+
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
-    .header_synonym_p_1::before{
-        font-size: 10px;
-        content:"(";
+    .header_synonym_p_first{
+        font-size: 9px !important;
     }
 }
-@media only screen and (min-width : 321px) {
-    .header_synonym_p_1::before{
-        font-size: 10px;
-        content:"(";
+
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    .header_synonym_p_first{
+        font-size: 9px!important;
     }
 }
+
 /* Smartphones (portrait) ----------- */
-@media only screen and (max-width : 320px) {
+@media only screen and (min-device-width: 480px) and (max-device-width: 640px) {
     .header_synonym_p_1::before{
-        font-size: 10px;
+        font-size: 9px !important;
         content:"(";
     }
 }
@@ -40,87 +43,72 @@ h3{
     content:"(";
 }
 
+@media only screen and (min-device-width: 480px) and (max-device-width: 640px)  {
+    .header_synonym_p_first, .header_synonym_p_middle{
+        font-size: 9px !important;
+        margin-right: 5px;
+    }
+}
+
+/* Smartphones (portrait) ----------- */
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
     .header_synonym_p_first, .header_synonym_p_middle{
-        font-size: 10px;
+        font-size: 9px !important;
         margin-right: 5px;
     }
 }
-@media only screen and (min-width : 321px) {
-    .header_synonym_p_first, .header_synonym_p_middle{
-        font-size: 10px;
-        margin-right: 5px;
-    }
-}
-/* Smartphones (portrait) ----------- */
-@media only screen and (max-width : 320px) {
-    .header_synonym_p_first, .header_synonym_p_middle{
-        font-size: 10px;
-        margin-right: 5px;
-    }
-}
-
 
 .header_synonym_p_first, .header_synonym_p_middle{
-    font-size: 12px;
+    font-size: 14px;
     margin-right: 5px;
 }
 
+
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
   
     .header_synonym_p_middle::after{
-      font-size: 10px;
-
-      content:",";
+        font-size: 9px !important;
+    
+        content:",";
     }
+    
 }
-@media only screen and (min-width : 321px) {
+@media only screen and (min-device-width: 480px) and (max-device-width: 640px) {
     .header_synonym_p_middle::after{
-        font-size: 10px;
-  
+        font-size: 9px !important;
+    
         content:",";
-      }
+    }
+    
 }
-/* Smartphones (portrait) ----------- */
-@media only screen and (max-width : 320px) {
-    .header_synonym_p_middle::after{
-        font-size: 10px;
-  
-        content:",";
-      }
-}
+
+
 
 
 .header_synonym_p_middle::after{
-    font-size: 12px;
+    font-size: 14px;
 
     content:",";
 }
 
-@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px)  {
   
     .header_synonym_p_last{
-        font-size: 10px;
+        font-size: 9px !important;
     
     }
 }
-@media only screen and (min-width : 321px) {
+@media only screen and (min-device-width: 480px) and (max-device-width: 640px) {
     .header_synonym_p_last{
-        font-size: 10px;
+        font-size: 9px !important;
     
     }
 }
-/* Smartphones (portrait) ----------- */
-@media only screen and (max-width : 320px) {
-    .header_synonym_p_last{
-        font-size: 10px;
-    
-    }
-}
+
 
 
 .header_synonym_p_last{
-   font-size: 12px;
+   font-size: 14px;
 
 }
 
@@ -134,33 +122,29 @@ h3{
 
 
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
-    .header_synonyms_end_bracket::after{
-        font-size: 10px;
-        content:")";
+    .header_synonyms_end_bracket{
+        font-size: 9px;
         display: inline-block;
     }
 }
 @media only screen and (min-width : 321px) {
-    .header_synonyms_end_bracket::after{
-        font-size: 10px;
-        content:")";
+    .header_synonyms_end_bracket{
+        font-size: 9px;
         display: inline-block;
     }
 }
 /* Smartphones (portrait) ----------- */
 @media only screen and (max-width : 320px) {
-    .header_synonyms_end_bracket::after{
-        font-size: 10px;
-        content:")";
+    .header_synonyms_end_bracket{
+        font-size: 9px;
         display: inline-block;
     }
 }
 
 
 
-.header_synonyms_end_bracket::after{
-    font-size: 12px;
-    content:")";
+.header_synonyms_end_bracket{
+    font-size: 14px;
     display: inline-block;
 }
 
@@ -186,20 +170,20 @@ h3{
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
   
     .header_wordtype_p{
-        font-size:10px;
+        font-size:9px;
       
     }
 }
 @media only screen and (min-width : 321px) {
     .header_wordtype_p{
-        font-size:10px;
+        font-size:9px;
       
     }
 }
 /* Smartphones (portrait) ----------- */
 @media only screen and (max-width : 320px) {
     .header_wordtype_p{
-      font-size:10px;
+      font-size:9px;
     
     }
 }
